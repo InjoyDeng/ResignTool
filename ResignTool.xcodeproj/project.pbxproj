@@ -1,0 +1,371 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B345DCB1F70CB140018F174 /* IDFileHpler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B345DCA1F70CB140018F174 /* IDFileHpler.m */; };
+		0B345DCE1F70CB1F0018F174 /* IDAppPackageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B345DCD1F70CB1F0018F174 /* IDAppPackageHandler.m */; };
+		0B345DD21F70FA7D0018F174 /* IDDateFormatterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B345DD11F70FA7D0018F174 /* IDDateFormatterUtil.m */; };
+		0B5D13211F793BC90001A886 /* IDManualQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D13201F793BC90001A886 /* IDManualQueue.m */; };
+		0B602DAC1F71038D007E13E8 /* IDRunLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B602DAB1F71038D007E13E8 /* IDRunLoop.m */; };
+		0BAF7CF51F6628D300055448 /* IDProvisioningProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAF7CF41F6628D300055448 /* IDProvisioningProfile.m */; };
+		0BFA3A711F60E70300238D25 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFA3A701F60E70300238D25 /* AppDelegate.m */; };
+		0BFA3A741F60E70300238D25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFA3A731F60E70300238D25 /* main.m */; };
+		0BFA3A771F60E70300238D25 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFA3A761F60E70300238D25 /* ViewController.m */; };
+		0BFA3A791F60E70300238D25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA3A781F60E70300238D25 /* Assets.xcassets */; };
+		0BFA3A7C1F60E70300238D25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA3A7A1F60E70300238D25 /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0B345DC91F70CB140018F174 /* IDFileHpler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDFileHpler.h; path = Util/IDFileHpler.h; sourceTree = "<group>"; };
+		0B345DCA1F70CB140018F174 /* IDFileHpler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDFileHpler.m; path = Util/IDFileHpler.m; sourceTree = "<group>"; };
+		0B345DCC1F70CB1F0018F174 /* IDAppPackageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDAppPackageHandler.h; path = Factory/IDAppPackageHandler.h; sourceTree = "<group>"; };
+		0B345DCD1F70CB1F0018F174 /* IDAppPackageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDAppPackageHandler.m; path = Factory/IDAppPackageHandler.m; sourceTree = "<group>"; };
+		0B345DD01F70FA7D0018F174 /* IDDateFormatterUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDDateFormatterUtil.h; path = Util/IDDateFormatterUtil.h; sourceTree = "<group>"; };
+		0B345DD11F70FA7D0018F174 /* IDDateFormatterUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDDateFormatterUtil.m; path = Util/IDDateFormatterUtil.m; sourceTree = "<group>"; };
+		0B5D131F1F793BC90001A886 /* IDManualQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IDManualQueue.h; path = Util/IDManualQueue.h; sourceTree = "<group>"; };
+		0B5D13201F793BC90001A886 /* IDManualQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = IDManualQueue.m; path = Util/IDManualQueue.m; sourceTree = "<group>"; };
+		0B602DAA1F71038D007E13E8 /* IDRunLoop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDRunLoop.h; path = Util/IDRunLoop.h; sourceTree = "<group>"; };
+		0B602DAB1F71038D007E13E8 /* IDRunLoop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDRunLoop.m; path = Util/IDRunLoop.m; sourceTree = "<group>"; };
+		0BAF7CF31F6628D300055448 /* IDProvisioningProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDProvisioningProfile.h; path = Entity/IDProvisioningProfile.h; sourceTree = "<group>"; };
+		0BAF7CF41F6628D300055448 /* IDProvisioningProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDProvisioningProfile.m; path = Entity/IDProvisioningProfile.m; sourceTree = "<group>"; };
+		0BFA3A6C1F60E70300238D25 /* ResignTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResignTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BFA3A6F1F60E70300238D25 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0BFA3A701F60E70300238D25 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0BFA3A731F60E70300238D25 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0BFA3A751F60E70300238D25 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0BFA3A761F60E70300238D25 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0BFA3A781F60E70300238D25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0BFA3A7B1F60E70300238D25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0BFA3A7D1F60E70300238D25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0BFA3A691F60E70300238D25 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0B345DC71F70CABF0018F174 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				0B345DC91F70CB140018F174 /* IDFileHpler.h */,
+				0B345DCA1F70CB140018F174 /* IDFileHpler.m */,
+				0B345DD01F70FA7D0018F174 /* IDDateFormatterUtil.h */,
+				0B345DD11F70FA7D0018F174 /* IDDateFormatterUtil.m */,
+				0B602DAA1F71038D007E13E8 /* IDRunLoop.h */,
+				0B602DAB1F71038D007E13E8 /* IDRunLoop.m */,
+				0B5D131F1F793BC90001A886 /* IDManualQueue.h */,
+				0B5D13201F793BC90001A886 /* IDManualQueue.m */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		0B345DC81F70CAC90018F174 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				0B345DCC1F70CB1F0018F174 /* IDAppPackageHandler.h */,
+				0B345DCD1F70CB1F0018F174 /* IDAppPackageHandler.m */,
+			);
+			name = Factory;
+			sourceTree = "<group>";
+		};
+		0BAF7CF21F66289F00055448 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				0BAF7CF31F6628D300055448 /* IDProvisioningProfile.h */,
+				0BAF7CF41F6628D300055448 /* IDProvisioningProfile.m */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+		0BFA3A631F60E70300238D25 = {
+			isa = PBXGroup;
+			children = (
+				0BFA3A6E1F60E70300238D25 /* ResignTool */,
+				0BFA3A6D1F60E70300238D25 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0BFA3A6D1F60E70300238D25 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0BFA3A6C1F60E70300238D25 /* ResignTool.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0BFA3A6E1F60E70300238D25 /* ResignTool */ = {
+			isa = PBXGroup;
+			children = (
+				0B345DC81F70CAC90018F174 /* Factory */,
+				0B345DC71F70CABF0018F174 /* Util */,
+				0BAF7CF21F66289F00055448 /* Entity */,
+				0BFA3A6F1F60E70300238D25 /* AppDelegate.h */,
+				0BFA3A701F60E70300238D25 /* AppDelegate.m */,
+				0BFA3A751F60E70300238D25 /* ViewController.h */,
+				0BFA3A761F60E70300238D25 /* ViewController.m */,
+				0BFA3A781F60E70300238D25 /* Assets.xcassets */,
+				0BFA3A7A1F60E70300238D25 /* Main.storyboard */,
+				0BFA3A7D1F60E70300238D25 /* Info.plist */,
+				0BFA3A721F60E70300238D25 /* Supporting Files */,
+			);
+			path = ResignTool;
+			sourceTree = "<group>";
+		};
+		0BFA3A721F60E70300238D25 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0BFA3A731F60E70300238D25 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0BFA3A6B1F60E70300238D25 /* ResignTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0BFA3A801F60E70300238D25 /* Build configuration list for PBXNativeTarget "ResignTool" */;
+			buildPhases = (
+				0BFA3A681F60E70300238D25 /* Sources */,
+				0BFA3A691F60E70300238D25 /* Frameworks */,
+				0BFA3A6A1F60E70300238D25 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ResignTool;
+			productName = ResignTool;
+			productReference = 0BFA3A6C1F60E70300238D25 /* ResignTool.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0BFA3A641F60E70300238D25 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Moxian;
+				TargetAttributes = {
+					0BFA3A6B1F60E70300238D25 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 8459PHA6LU;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 0BFA3A671F60E70300238D25 /* Build configuration list for PBXProject "ResignTool" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0BFA3A631F60E70300238D25;
+			productRefGroup = 0BFA3A6D1F60E70300238D25 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0BFA3A6B1F60E70300238D25 /* ResignTool */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0BFA3A6A1F60E70300238D25 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BFA3A791F60E70300238D25 /* Assets.xcassets in Resources */,
+				0BFA3A7C1F60E70300238D25 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0BFA3A681F60E70300238D25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BFA3A771F60E70300238D25 /* ViewController.m in Sources */,
+				0B602DAC1F71038D007E13E8 /* IDRunLoop.m in Sources */,
+				0B345DD21F70FA7D0018F174 /* IDDateFormatterUtil.m in Sources */,
+				0B345DCE1F70CB1F0018F174 /* IDAppPackageHandler.m in Sources */,
+				0BFA3A741F60E70300238D25 /* main.m in Sources */,
+				0B345DCB1F70CB140018F174 /* IDFileHpler.m in Sources */,
+				0B5D13211F793BC90001A886 /* IDManualQueue.m in Sources */,
+				0BAF7CF51F6628D300055448 /* IDProvisioningProfile.m in Sources */,
+				0BFA3A711F60E70300238D25 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0BFA3A7A1F60E70300238D25 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0BFA3A7B1F60E70300238D25 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0BFA3A7E1F60E70300238D25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		0BFA3A7F1F60E70300238D25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		0BFA3A811F60E70300238D25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8459PHA6LU;
+				INFOPLIST_FILE = ResignTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.injoy.ResignTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0BFA3A821F60E70300238D25 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8459PHA6LU;
+				INFOPLIST_FILE = ResignTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.injoy.ResignTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0BFA3A671F60E70300238D25 /* Build configuration list for PBXProject "ResignTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BFA3A7E1F60E70300238D25 /* Debug */,
+				0BFA3A7F1F60E70300238D25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0BFA3A801F60E70300238D25 /* Build configuration list for PBXNativeTarget "ResignTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BFA3A811F60E70300238D25 /* Debug */,
+				0BFA3A821F60E70300238D25 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0BFA3A641F60E70300238D25 /* Project object */;
+}
