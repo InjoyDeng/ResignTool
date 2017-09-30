@@ -97,6 +97,11 @@
     }
 }
 
+- (IBAction)openCacheFolderClick:(id)sender {
+    NSArray *fileURLs = [NSArray arrayWithObjects:[NSURL fileURLWithPath:TEMP_PATH], nil];
+    [[NSWorkspace sharedWorkspace] activateFileViewerSelectingURLs:fileURLs];
+}
+
 - (IBAction)resignClick:(id)sender {
     if (![fileManager fileExistsAtPath:self.ipaPathField.stringValue]) {
         [self addLog:[NSString stringWithFormat:@"Not found ipa file %@", self.ipaPathField.stringValue] withColor:[NSColor redColor]];

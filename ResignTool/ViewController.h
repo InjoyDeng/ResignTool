@@ -19,9 +19,10 @@
 @property (weak) IBOutlet NSTextField   *destinationPathField;
 @property (weak) IBOutlet NSButton      *browseDestinationPathButton;
 @property (weak) IBOutlet NSTextField   *bundleIdField;
-@property        IBOutlet NSTextView    *logField;
+@property (weak) IBOutlet NSButton      *cacheFolderButton;
 @property (weak) IBOutlet NSButton      *resignButton;
 @property (weak) IBOutlet NSButton      *cleanButton;
+@property        IBOutlet NSTextView    *logField;
 
 @property (nonatomic)     IDAppPackageHandler *package;
 
