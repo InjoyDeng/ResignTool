@@ -161,7 +161,6 @@
 				TargetAttributes = {
 					0BFA3A6B1F60E70300238D25 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 8459PHA6LU;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -321,7 +320,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8459PHA6LU;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ResignTool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -335,7 +334,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8459PHA6LU;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ResignTool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
