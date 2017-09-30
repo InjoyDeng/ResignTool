@@ -52,7 +52,7 @@ typedef void(^LogBlock)(NSString *logString);
 
 /**
  解压
-
+ 
  @param success 成功
  @param error 失败
  */
@@ -60,6 +60,19 @@ typedef void(^LogBlock)(NSString *logString);
 
 - (BOOL)removeCodeSignatureDirectory;
 
+
+/**
+ 封装好的重签方法
+ 
+ @param provisioningprofile 顾名思义
+ @param certificateName 顾名思义
+ @param bundleIdentifier 顾名思义
+ @param displayName 顾名思义
+ @param destinationPath 顾名思义
+ @param logBlock 顾名思义
+ @param errorBlock 顾名思义
+ @param successBlock 顾名思义
+ */
 - (void)resignWithProvisioningProfile:(IDProvisioningProfile *)provisioningprofile
                           certificate:(NSString *)certificateName
                      bundleIdentifier:(NSString *)bundleIdentifier
@@ -68,4 +81,16 @@ typedef void(^LogBlock)(NSString *logString);
                                   log:(LogBlock)logBlock
                                 error:(ErrorBlock)errorBlock
                               success:(SuccessBlock)successBlock;
+
+#pragma mark - 签名流程
+- (void)createEntitlementsWithProvisioning:(IDProvisioningProfile *)provisioningprofile log:(LogBlock)logBlock error:(ErrorBlock)errorBlock success:(SuccessBlock)successBlock;
+
+- (void)editInfoPlistWithIdentifier:(NSString *)bundleIdentifier displayName:(NSString *)displayName log:(LogBlock)logBlock error:(ErrorBlock)errorBlock success:(SuccessBlock)successBlock;
+
+- (void)editEmbeddedProvision:(IDProvisioningProfile *)provisioningprofile log:(LogBlock)logBlock error:(ErrorBlock)errorBlock success:(SuccessBlock)successBlock;
+
+- (void)doCodesign:(NSString *)certificateName log:(LogBlock)logBlock error:(ErrorBlock)errorBlock success:(SuccessBlock)successBlock;
+
+- (void)zipPackageToDirPath:(NSString *)zipDirPath log:(LogBlock)logBlock error:(ErrorBlock)errorBlock success:(SuccessBlock)successBlock;
+
 @end
