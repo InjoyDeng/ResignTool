@@ -42,7 +42,7 @@
         self.packagePath = path;
         
         NSString *dateString = [[IDDateFormatterUtil sharedFormatter] timestampForDate:[NSDate date]];
-        self.workPath = [TEMP_PATH stringByAppendingPathComponent:[[[self.packagePath lastPathComponent] stringByDeletingPathExtension] stringByAppendingPathComponent:dateString]];
+        self.workPath = [[[TEMP_PATH stringByAppendingPathComponent:@"unzip"] stringByAppendingPathComponent:[[self.packagePath lastPathComponent] stringByDeletingPathExtension]] stringByAppendingPathComponent:dateString];
     }
     return self;
 }
@@ -96,7 +96,7 @@
     successLocalBlock = [successBlock copy];
     
     if (logLocalBlock) logLocalBlock(@"Editing the Embedded Provision...");
-
+    
     NSString *payloadPath = [self.workPath stringByAppendingPathComponent:kPayloadDirName];
     NSArray *payloadContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:payloadPath error:nil];
     
@@ -206,6 +206,7 @@
     if (logLocalBlock)
         logLocalBlock([NSString stringWithFormat:@"Beginning the zip of the IPA file in the path: %@", zippedIpaPath]);
     
+    [manager createDirectoryAtPath:zipDirPath withIntermediateDirectories:TRUE attributes:nil error:nil];
     [[IDFileHpler sharedInstance] zip:self.workPath toPath:zippedIpaPath complete:^(BOOL result) {
         if (result) {
             if (logLocalBlock)
@@ -248,7 +249,7 @@
         [generateEntitlementsTask setLaunchPath:@"/usr/bin/security"];
         [generateEntitlementsTask setArguments:@[@"cms", @"-D", @"-i", provisioningprofile.path]];
         [generateEntitlementsTask setCurrentDirectoryPath:self.workPath];
-    
+        
         NSPipe *pipe = [NSPipe pipe];
         [generateEntitlementsTask setStandardOutput:pipe];
         [generateEntitlementsTask setStandardError:pipe];
@@ -286,7 +287,7 @@
     }
     
     NSMutableDictionary* entitlements = [[NSMutableDictionary alloc] initWithDictionary:entitlementsResult.propertyList[@"Entitlements"]];
-
+    
     NSString* filePath = [self.workPath stringByAppendingPathComponent:kEntitlementsPlistFilename];
     NSData *xmlData = [NSPropertyListSerialization dataWithPropertyList:entitlements format:NSPropertyListXMLFormat_v1_0 options:kCFPropertyListImmutable error:nil];
     
@@ -344,7 +345,7 @@
     logLocalBlock = [logBlock copy];
     errorLocalBlock = [errorBlock copy];
     successLocalBlock = [successBlock copy];
-
+    
     if (logLocalBlock) logLocalBlock(@"Beginning the codesign...");
     
     if ([manager fileExistsAtPath:self.appPath]) {
@@ -419,7 +420,7 @@
         };
         
     } else {
-         if (errorLocalBlock) errorLocalBlock([NSString stringWithFormat:@"Not found %@ folder", self.appPath]);
+        if (errorLocalBlock) errorLocalBlock([NSString stringWithFormat:@"Not found %@ folder", self.appPath]);
     }
 }
 
@@ -536,3 +537,4 @@
 }
 
 @end
+
