@@ -1,5 +1,5 @@
 # ResignTool
-This is an app for macOS that can (re)sign apps and bundle them into ipa files that are ready to be installed on an iOS device. 
+This is an app for macOS that can (re)sign apps and bundle them into ipa files that are ready to be installed on an iOS device. Unrestricted by the applicationIdentifier in the ProvisioningProfile file,support ipa files containing .framework and .dylib
 
 这是一个运行在 macOS 上的 ipa 文件签名（重签）工具，并且不受 ProvisioningProfile 文件中的 applicationIdentifier 限制，支持含有 Framework、dylib 的 ipa 文件
 
@@ -21,7 +21,4 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-## Thanks To
-[maciekish / iReSign](https://github.com/maciekish/iReSign): The basic process was gleaned from the source code of this project.
 
