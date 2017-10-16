@@ -349,22 +349,19 @@
     if (logLocalBlock) logLocalBlock(@"Beginning the codesign...");
     
     if ([manager fileExistsAtPath:self.appPath]) {
-        NSString *frameworksPath = [self.appPath stringByAppendingPathComponent:@"Frameworks"];
         NSMutableArray *waitSignPathArray = @[].mutableCopy;
         
-        BOOL isDirectory = NO;
-        if ([manager fileExistsAtPath:frameworksPath isDirectory:&isDirectory]) {
-            if (isDirectory) {
-                NSArray *frameworksContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:frameworksPath error:nil];
-                // 添加 framework 到待签名数组
-                for (NSString *frameworkFile in frameworksContents) {
-                    NSString *extension = [[frameworkFile pathExtension] lowercaseString];
-                    if ([extension isEqualTo:@"framework"] || [extension isEqualTo:@"dylib"]) {
-                        [waitSignPathArray addObject:[frameworksPath stringByAppendingPathComponent:frameworkFile]];
-                    }
-                }
+        NSArray *subpaths = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:self.appPath error:nil];
+        for (NSString *subpath in subpaths) {
+            NSString *extension = [[subpath pathExtension] lowercaseString];
+            if ([extension isEqualTo:@"framework"] || [extension isEqualTo:@"dylib"]) {
+                [waitSignPathArray addObject:[self.appPath stringByAppendingPathComponent:subpath]];
+            }
+            if ([extension isEqualTo:@"appex"]) {
+                // TODO: 待添加支持
             }
         }
+        
         // 最后对 appPath 进行签名
         [waitSignPathArray addObject:self.appPath];
         IDManualQueue *queue = [[IDManualQueue alloc] init];
@@ -376,7 +373,7 @@
                 
                 NSTask *codesignTask = [[NSTask alloc] init];
                 [codesignTask setLaunchPath:@"/usr/bin/codesign"];
-                [codesignTask setArguments:@[@"-f", @"-s", certificateName, signPath, [NSString stringWithFormat:@"--entitlements=%@", entitlementsPath]]];
+                [codesignTask setArguments:@[@"-vvv",@"-fs", certificateName, signPath, [NSString stringWithFormat:@"--entitlements=%@", entitlementsPath]]];
                 NSPipe *pipe = [NSPipe pipe];
                 [codesignTask setStandardOutput:pipe];
                 [codesignTask setStandardError:pipe];
