@@ -297,10 +297,8 @@
     self.bundleIdField.stringValue = @"";
     self.logField.string = @"";
     
-    if (self.package.workPath) {
-        [fileManager removeItemAtPath:TEMP_PATH error:nil];
-        self.package = nil;
-    }
+    [fileManager removeItemAtPath:TEMP_PATH error:nil];
+    self.package = nil;
 }
 
 @end
