@@ -13,7 +13,7 @@ You need a provisioning profile and signing certificate, you can get these from 
 You can then open up iOS App Signer and select your input file, signing certificate, provisioning file, and optionally specify a new application ID and/or application display name.
 
 ## Known issues
-1. There is no support for some binary files, such as .appex
+1. There is no support for some binary and bundle files, such as .appex
 
 ## License
 Copyright (c) 2017 Injoy . All rights reserved.
