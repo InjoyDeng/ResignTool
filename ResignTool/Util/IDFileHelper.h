@@ -1,5 +1,5 @@
 //
-//  IDFileHpler.h
+//  IDFileHelper.h
 //  ResignTool
 //
 //  Created by Injoy on 2017/9/11.
@@ -10,7 +10,7 @@
 
 #define TEMP_PATH [NSTemporaryDirectory() stringByAppendingPathComponent:@"resign"]
 
-@interface IDFileHpler : NSObject
+@interface IDFileHelper : NSObject
 
 /**
  单例

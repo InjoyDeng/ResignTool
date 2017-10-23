@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "AppDelegate.h"
-#import "IDFileHpler.h"
+#import "IDFileHelper.h"
 #import "IDProvisioningProfile.h"
 #import "IDDateFormatterUtil.h"
 
@@ -31,7 +31,7 @@
     
     [self.resignButton setKeyEquivalent:@"\r"];
     
-    NSArray *lackSupportUtility = [[IDFileHpler sharedInstance] lackSupportUtility];
+    NSArray *lackSupportUtility = [[IDFileHelper sharedInstance] lackSupportUtility];
     if ([lackSupportUtility count] == 0) {
         //获取本机证书
         [self getCertificates];
@@ -220,7 +220,7 @@
 
 #pragma mark - Certificate Methods
 - (void)getCertificates {
-    [[IDFileHpler sharedInstance] getCertificatesSuccess:^(NSArray *certificateNames) {
+    [[IDFileHelper sharedInstance] getCertificatesSuccess:^(NSArray *certificateNames) {
         certificatesArray = certificateNames;
         [self.certificateComboBox reloadData];
     } error:^(NSString *errString) {
@@ -230,7 +230,7 @@
 
 #pragma mark - ProvisioningProfile Methods
 - (void)getProvisioningProfiles {
-    provisioningArray = [[IDFileHpler sharedInstance] getProvisioningProfiles];
+    provisioningArray = [[IDFileHelper sharedInstance] getProvisioningProfiles];
     [self.provisioningComboBox reloadData];
 }
 

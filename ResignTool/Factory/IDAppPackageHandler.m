@@ -8,7 +8,7 @@
 
 #import "IDAppPackageHandler.h"
 #import "IDRunLoop.h"
-#import "IDFileHpler.h"
+#import "IDFileHelper.h"
 #import "IDManualQueue.h"
 #import "IDDateFormatterUtil.h"
 
@@ -181,7 +181,7 @@
     [manager removeItemAtPath:self.workPath error:nil];
     [manager createDirectoryAtPath:self.workPath withIntermediateDirectories:TRUE attributes:nil error:nil];
     
-    [[IDFileHpler sharedInstance] unzip:self.packagePath toPath:self.workPath complete:^(BOOL result) {
+    [[IDFileHelper sharedInstance] unzip:self.packagePath toPath:self.workPath complete:^(BOOL result) {
         if (result) {
             [self setAppPath];
             if (success != nil) success();
@@ -207,7 +207,7 @@
         logLocalBlock([NSString stringWithFormat:@"Beginning the zip of the IPA file in the path: %@", zippedIpaPath]);
     
     [manager createDirectoryAtPath:zipDirPath withIntermediateDirectories:TRUE attributes:nil error:nil];
-    [[IDFileHpler sharedInstance] zip:self.workPath toPath:zippedIpaPath complete:^(BOOL result) {
+    [[IDFileHelper sharedInstance] zip:self.workPath toPath:zippedIpaPath complete:^(BOOL result) {
         if (result) {
             if (logLocalBlock)
                 logLocalBlock([NSString stringWithFormat:@"Zipping done. IPA file saved in the path: %@", zippedIpaPath]);

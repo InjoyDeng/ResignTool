@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B345DCB1F70CB140018F174 /* IDFileHpler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B345DCA1F70CB140018F174 /* IDFileHpler.m */; };
+		0B345DCB1F70CB140018F174 /* IDFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B345DCA1F70CB140018F174 /* IDFileHelper.m */; };
 		0B345DCE1F70CB1F0018F174 /* IDAppPackageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B345DCD1F70CB1F0018F174 /* IDAppPackageHandler.m */; };
 		0B345DD21F70FA7D0018F174 /* IDDateFormatterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B345DD11F70FA7D0018F174 /* IDDateFormatterUtil.m */; };
 		0B5D13211F793BC90001A886 /* IDManualQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B5D13201F793BC90001A886 /* IDManualQueue.m */; };
@@ -21,8 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B345DC91F70CB140018F174 /* IDFileHpler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDFileHpler.h; path = Util/IDFileHpler.h; sourceTree = "<group>"; };
-		0B345DCA1F70CB140018F174 /* IDFileHpler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDFileHpler.m; path = Util/IDFileHpler.m; sourceTree = "<group>"; };
+		0B345DC91F70CB140018F174 /* IDFileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDFileHelper.h; path = Util/IDFileHelper.h; sourceTree = "<group>"; };
+		0B345DCA1F70CB140018F174 /* IDFileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDFileHelper.m; path = Util/IDFileHelper.m; sourceTree = "<group>"; };
 		0B345DCC1F70CB1F0018F174 /* IDAppPackageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDAppPackageHandler.h; path = Factory/IDAppPackageHandler.h; sourceTree = "<group>"; };
 		0B345DCD1F70CB1F0018F174 /* IDAppPackageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IDAppPackageHandler.m; path = Factory/IDAppPackageHandler.m; sourceTree = "<group>"; };
 		0B345DD01F70FA7D0018F174 /* IDDateFormatterUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IDDateFormatterUtil.h; path = Util/IDDateFormatterUtil.h; sourceTree = "<group>"; };
@@ -58,8 +58,8 @@
 		0B345DC71F70CABF0018F174 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				0B345DC91F70CB140018F174 /* IDFileHpler.h */,
-				0B345DCA1F70CB140018F174 /* IDFileHpler.m */,
+				0B345DC91F70CB140018F174 /* IDFileHelper.h */,
+				0B345DCA1F70CB140018F174 /* IDFileHelper.m */,
 				0B345DD01F70FA7D0018F174 /* IDDateFormatterUtil.h */,
 				0B345DD11F70FA7D0018F174 /* IDDateFormatterUtil.m */,
 				0B602DAA1F71038D007E13E8 /* IDRunLoop.h */,
@@ -205,7 +205,7 @@
 				0B345DD21F70FA7D0018F174 /* IDDateFormatterUtil.m in Sources */,
 				0B345DCE1F70CB1F0018F174 /* IDAppPackageHandler.m in Sources */,
 				0BFA3A741F60E70300238D25 /* main.m in Sources */,
-				0B345DCB1F70CB140018F174 /* IDFileHpler.m in Sources */,
+				0B345DCB1F70CB140018F174 /* IDFileHelper.m in Sources */,
 				0B5D13211F793BC90001A886 /* IDManualQueue.m in Sources */,
 				0BAF7CF51F6628D300055448 /* IDProvisioningProfile.m in Sources */,
 				0BFA3A711F60E70300238D25 /* AppDelegate.m in Sources */,

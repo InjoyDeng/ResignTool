@@ -1,30 +1,30 @@
 //
-//  IDFileHpler.m
+//  IDFileHelper.m
 //  ResignTool
 //
 //  Created by Injoy on 2017/9/11.
 //  Copyright © 2017年 Injoy. All rights reserved.
 //
 
-#import "IDFileHpler.h"
+#import "IDFileHelper.h"
 #import "IDProvisioningProfile.h"
 #import "IDRunLoop.h"
 
 static const NSString *kMobileprovisionDirName = @"Library/MobileDevice/Provisioning Profiles";
 
-@implementation IDFileHpler {
+@implementation IDFileHelper {
     // 全局文件管理
     NSFileManager *manager;
     // provisionprofile 的扩展名
     NSArray *provisionExtensions;
 }
 
-static IDFileHpler *istance;
+static IDFileHelper *istance;
 
 + (instancetype)sharedInstance {
     @synchronized(self) {
         if(istance == nil) {
-            istance = [[IDFileHpler alloc] init];
+            istance = [[IDFileHelper alloc] init];
             return istance;
         }
     }

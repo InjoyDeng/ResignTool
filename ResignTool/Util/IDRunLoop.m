@@ -20,11 +20,9 @@
 -(void)run:(void (^)(void))block {
     self.isSuspend = NO;
     dispatch_async(dispatch_get_global_queue(DISPATCH_TIME_NOW, 0), ^{
-        @autoreleasepool {
-            while (!self.isSuspend) {
-                block();
-                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-            }
+        while (!self.isSuspend) {
+            block();
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
     });
 }
