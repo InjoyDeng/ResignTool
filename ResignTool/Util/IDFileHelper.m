@@ -106,8 +106,8 @@ static IDFileHelper *istance;
         BOOL isDirectory;
         if ([manager fileExistsAtPath:[NSString stringWithFormat:@"%@/%@/%@", NSHomeDirectory(), kMobileprovisionDirName, path] isDirectory:&isDirectory]) {
             IDProvisioningProfile *profile = [[IDProvisioningProfile alloc] initWithPath:[NSString stringWithFormat:@"%@/%@/%@", NSHomeDirectory(), kMobileprovisionDirName, path]];
-            if ([profile.debug isEqualToString:@"NO"])
-                [provisioningArray addObject:profile];
+            
+            [provisioningArray addObject:profile];
         }
     }];
     
