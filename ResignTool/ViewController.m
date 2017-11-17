@@ -132,12 +132,7 @@
     NSString *bundleIdentifier = @"";
     if (useMobileprovisionBundleID) {
         IDProvisioningProfile *file = provisioningArray[self.provisioningComboBox.indexOfSelectedItem];
-        if ([file.bundleIdentifier rangeOfString:@"*"].location > 0) {
-            [self addLog:[NSString stringWithFormat:@"Unable to use the bundleIdentifier is \"*\" of the ProvisioningProfile"] withColor:[NSColor redColor]];
-            return;
-        } else {
             bundleIdentifier = file.bundleIdentifier;
-        }
     } else {
         if (self.bundleIdField.stringValue.length == 0) {
             [self addLog:[NSString stringWithFormat:@"This app cann't have no bundleIdentifier"] withColor:[NSColor redColor]];
