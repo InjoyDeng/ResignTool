@@ -10,7 +10,7 @@ Download the application 👇
 
 下载应用 👇
 
-👉  [Download](https://i.imgur.com/H8kRoPf.png)
+👉  [Download](https://github.com/InjoyDeng/ResignTool/releases/tag/1.0)
 
 ## Usage
 
