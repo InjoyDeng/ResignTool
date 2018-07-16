@@ -209,14 +209,14 @@
     [manager createDirectoryAtPath:zipDirPath withIntermediateDirectories:TRUE attributes:nil error:nil];
     [[IDFileHelper sharedInstance] zip:self.workPath toPath:zippedIpaPath complete:^(BOOL result) {
         if (result) {
-            if (logLocalBlock)
-                logLocalBlock([NSString stringWithFormat:@"Zipping done. IPA file saved in the path: %@", zippedIpaPath]);
+            if (self->logLocalBlock)
+                self->logLocalBlock([NSString stringWithFormat:@"Zipping done. IPA file saved in the path: %@", zippedIpaPath]);
             
-            if (successLocalBlock)
-                successLocalBlock([NSString stringWithFormat:@"Resign result: %@", [[codesigningResult stringByAppendingString:@"\n\n"] stringByAppendingString:verificationResult]]);
+            if (self->successLocalBlock)
+                self->successLocalBlock([NSString stringWithFormat:@"Resign result: %@", [[self->codesigningResult stringByAppendingString:@"\n\n"] stringByAppendingString:self->verificationResult]]);
         } else {
-            if (errorLocalBlock)
-                errorLocalBlock(@"Unable to unzip the file: the destination path is empty or the source IPA file was corrupted");
+            if (self->errorLocalBlock)
+                self->errorLocalBlock(@"Unable to unzip the file: the destination path is empty or the source IPA file was corrupted");
         }
     }];
 }
@@ -265,8 +265,8 @@
                     if (terminationStatus == 0) {
                         [self doEntitlements:provisioningprofile];
                     } else {
-                        if (errorLocalBlock != nil)
-                            errorLocalBlock(@"Entitlements generation failed. Please try again");
+                        if (self->errorLocalBlock != nil)
+                            self->errorLocalBlock(@"Entitlements generation failed. Please try again");
                     }
                 }];
             }
@@ -381,7 +381,7 @@
                 [codesignTask launch];
                 [NSThread detachNewThreadSelector:@selector(watchCodesigning:) toTarget:self withObject:handle];
                 
-                if (logLocalBlock) logLocalBlock([NSString stringWithFormat:@"start codesigning with %@...", [signPath lastPathComponent]]);
+                if (self->logLocalBlock) self->logLocalBlock([NSString stringWithFormat:@"start codesigning with %@...", [signPath lastPathComponent]]);
                 
                 IDRunLoop *verifyCodesigning = [IDRunLoop new];
                 [verifyCodesigning run:^{
@@ -390,14 +390,14 @@
                         [verifyCodesigning stop:^{
                             [self verifySignature:signPath complete:^(NSString *error) {
                                 if (error) {
-                                    if (errorLocalBlock) {
+                                    if (self->errorLocalBlock) {
                                         failurePath = signPath;
-                                        errorLocalBlock([NSString stringWithFormat:@"Signing failed with error: %@", error]);
+                                        self->errorLocalBlock([NSString stringWithFormat:@"Signing failed with error: %@", error]);
                                         [queue cancelAll];
                                     }
                                 } else {
-                                    if (logLocalBlock) {
-                                        logLocalBlock([NSString stringWithFormat:@"%@ codesigning done", [signPath lastPathComponent]]);
+                                    if (self->logLocalBlock) {
+                                        self->logLocalBlock([NSString stringWithFormat:@"%@ codesigning done", [signPath lastPathComponent]]);
                                         [queue next];
                                     }
                                 }
@@ -412,8 +412,8 @@
         
         [queue next];
         queue.noOperationPerform = ^{
-            if (successLocalBlock && failurePath == nil)
-                successLocalBlock(@"Verification Codesigning dones");
+            if (self->successLocalBlock && failurePath == nil)
+                self->successLocalBlock(@"Verification Codesigning dones");
         };
         
     } else {
@@ -451,10 +451,10 @@
             if ([verifyTask isRunning] == 0) {
                 
                 [checkVerification stop:^{
-                    if ([verificationResult length] == 0) {
+                    if ([self->verificationResult length] == 0) {
                         if (complete) complete(nil);
                     } else {
-                        NSString *error = [[codesigningResult stringByAppendingString:@"\n\n"] stringByAppendingString:verificationResult];
+                        NSString *error = [[self->codesigningResult stringByAppendingString:@"\n\n"] stringByAppendingString:self->verificationResult];
                         if (complete) complete(error);
                     }
                 }];
@@ -486,44 +486,44 @@
     
     // create Entitlements
     [self createEntitlementsWithProvisioning:provisioningprofile log:^(NSString *logString) {
-        if (logResignBlock) logResignBlock(logString);
+        if (self->logResignBlock) self->logResignBlock(logString);
     } error:^(NSString *errorString) {
-        if (errorResignBlock) errorResignBlock(errorString);
+        if (self->errorResignBlock) self->errorResignBlock(errorString);
     } success:^(id message) {
-        if (logResignBlock) logResignBlock(message);
+        if (self->logResignBlock) self->logResignBlock(message);
         
         // edit info.plist
         [self editInfoPlistWithIdentifier:bundleIdentifier displayName:displayName log:^(NSString *logString) {
-            if (logResignBlock) logResignBlock(logString);
+            if (self->logResignBlock) self->logResignBlock(logString);
         } error:^(NSString *errorString) {
-            if (errorResignBlock) errorResignBlock(errorString);
+            if (self->errorResignBlock) self->errorResignBlock(errorString);
         } success:^(id message) {
-            if (logResignBlock) logResignBlock(message);
+            if (self->logResignBlock) self->logResignBlock(message);
             
             // edit Embedded Provision
             [self editEmbeddedProvision:provisioningprofile log:^(NSString *logString) {
-                if (logResignBlock) logResignBlock(logString);
+                if (self->logResignBlock) self->logResignBlock(logString);
             } error:^(NSString *errorString) {
-                if (errorResignBlock) errorResignBlock(errorString);
+                if (self->errorResignBlock) self->errorResignBlock(errorString);
             } success:^(id message) {
-                if (logResignBlock) logResignBlock(message);
+                if (self->logResignBlock) self->logResignBlock(message);
                 
                 // Do the codesign
                 [self doCodesign:certificateName log:^(NSString *logString) {
-                    if (logResignBlock) logResignBlock(logString);
+                    if (self->logResignBlock) self->logResignBlock(logString);
                 } error:^(NSString *errorString) {
-                    if (errorResignBlock) errorResignBlock(errorString);
+                    if (self->errorResignBlock) self->errorResignBlock(errorString);
                 } success:^(id message) {
-                    if (logResignBlock) logResignBlock(message);
+                    if (self->logResignBlock) self->logResignBlock(message);
                     
                     // zip
                     [self zipPackageToDirPath:destinationPath log:^(NSString *logString) {
-                        if (logResignBlock) logResignBlock(logString);
+                        if (self->logResignBlock) self->logResignBlock(logString);
                     } error:^(NSString *errorString) {
-                        if (errorResignBlock) errorResignBlock(errorString);
+                        if (self->errorResignBlock) self->errorResignBlock(errorString);
                     } success:^(id message) {
-                        if (successResignBlock)
-                            successResignBlock(message);
+                        if (self->successResignBlock)
+                            self->successResignBlock(message);
                     }];
                 }];
             }];

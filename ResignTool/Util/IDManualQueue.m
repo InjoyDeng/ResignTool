@@ -27,7 +27,7 @@
     if (operations.count > 0) {
         NSOperation *operation = [operations objectAtIndex:0];
         operation.completionBlock = ^{
-            [operations removeObjectAtIndex:0];
+            [self->operations removeObjectAtIndex:0];
         };
         
         [operation start];

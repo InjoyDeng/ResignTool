@@ -216,7 +216,7 @@
 #pragma mark - Certificate Methods
 - (void)getCertificates {
     [[IDFileHelper sharedInstance] getCertificatesSuccess:^(NSArray *certificateNames) {
-        certificatesArray = certificateNames;
+        self->certificatesArray = certificateNames;
         [self.certificateComboBox reloadData];
     } error:^(NSString *errString) {
         [self addLog:errString withColor:[NSColor redColor]]; 

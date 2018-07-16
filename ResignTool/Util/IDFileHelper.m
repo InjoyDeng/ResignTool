@@ -104,7 +104,7 @@ static IDFileHelper *istance;
     [provisioningProfiles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         NSString *path = (NSString*)obj;
         BOOL isDirectory;
-        if ([manager fileExistsAtPath:[NSString stringWithFormat:@"%@/%@/%@", NSHomeDirectory(), kMobileprovisionDirName, path] isDirectory:&isDirectory]) {
+        if ([self->manager fileExistsAtPath:[NSString stringWithFormat:@"%@/%@/%@", NSHomeDirectory(), kMobileprovisionDirName, path] isDirectory:&isDirectory]) {
             IDProvisioningProfile *profile = [[IDProvisioningProfile alloc] initWithPath:[NSString stringWithFormat:@"%@/%@/%@", NSHomeDirectory(), kMobileprovisionDirName, path]];
             
             [provisioningArray addObject:profile];
@@ -133,7 +133,7 @@ static IDFileHelper *istance;
             [runloop stop:^{
                 int terminationStatus = unzipTask.terminationStatus;
                 if (terminationStatus == 0) {
-                    if ([manager fileExistsAtPath:dstPath]) {
+                    if ([self->manager fileExistsAtPath:dstPath]) {
                         completeBlock(YES);
                     }
                 } else {
@@ -158,7 +158,7 @@ static IDFileHelper *istance;
             [runloop stop:^{
                 int terminationStatus = zipTask.terminationStatus;
                 if (terminationStatus == 0) {
-                    if ([manager fileExistsAtPath:dstFilePath]) {
+                    if ([self->manager fileExistsAtPath:dstFilePath]) {
                         completeBlock(YES);
                     } else {
                         completeBlock(NO);
