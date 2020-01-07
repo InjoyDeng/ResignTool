@@ -5,11 +5,7 @@ This is an app for macOS that can (re)sign apps and bundle them into ipa files t
 
 ## Release
 
-Download the application 👇
-
-下载应用 👇
-
-👉  [Download](https://github.com/InjoyDeng/ResignTool/releases/tag/1.0)
+[Download](https://github.com/InjoyDeng/ResignTool/releases/tag/1.0)
 
 ## Usage
 
