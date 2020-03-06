@@ -95,7 +95,7 @@
     errorLocalBlock = [errorBlock copy];
     successLocalBlock = [successBlock copy];
     
-    if (logLocalBlock) logLocalBlock(@"Editing the Embedded Provision...");
+    if (logLocalBlock) logLocalBlock(@"Generating Embedded.mobileprovision...");
     
     NSString *payloadPath = [self.workPath stringByAppendingPathComponent:kPayloadDirName];
     NSArray *payloadContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:payloadPath error:nil];
@@ -114,10 +114,10 @@
     NSString *targetPath = [[self.appPath stringByAppendingPathComponent:kEmbeddedProvisioningFilename] stringByAppendingPathExtension:@"mobileprovision"];
     if ([manager copyItemAtPath:provisioningprofile.path toPath:targetPath error:nil]) {
         if (successLocalBlock != nil)
-            successLocalBlock(@"Embedded Provision edited successfully");
+            successLocalBlock(@"Successfully created Embedded.mobileprovision");
     }else{
         if (errorLocalBlock != nil)
-            errorLocalBlock(@"Embedded Provision editing failed. Please try again");
+            errorLocalBlock(@"Create new Embedded.mobileprovision failed.");
     }
     
 }
@@ -145,7 +145,7 @@
         if (displayName) {
             return displayName;
         } else {
-            return @"Not key is \"CFBundleDisplayName\" in the info.plist";
+            return @"\"CFBundleDisplayName\" is missing from the info.plist file.";
         }
     } else {
         return @"Not found info.plist";
@@ -174,7 +174,7 @@
 #pragma mark - Zip Method
 - (void)unzipIpa:(void (^)(void))success error:(void (^)(NSString *error))error {
     if (![[[self.packagePath pathExtension] lowercaseString] isEqualToString:@"ipa"]) {
-        error([NSString stringWithFormat:@"This file extension is not .ipa"]);
+        error([NSString stringWithFormat:@"File extension is not \".ipa\""]);
         return;
     }
     
@@ -187,7 +187,7 @@
             if (success != nil) success();
         } else {
             [self removeWorkDirectory];
-            if (error != nil) error(@"unzip failure");
+            if (error != nil) error(@"File extraction failed.");
         }
     }];
 }
@@ -204,19 +204,16 @@
     NSString *displayName = self.bundleDisplayName;
     NSString *zippedIpaPath = [[zipDirPath stringByAppendingPathComponent:displayName] stringByAppendingPathExtension:@"ipa"];
     if (logLocalBlock)
-        logLocalBlock([NSString stringWithFormat:@"Beginning the zip of the IPA file in the path: %@", zippedIpaPath]);
+        logLocalBlock([NSString stringWithFormat:@"Compressing file to path: %@", zippedIpaPath]);
     
     [manager createDirectoryAtPath:zipDirPath withIntermediateDirectories:TRUE attributes:nil error:nil];
     [[IDFileHelper sharedInstance] zip:self.workPath toPath:zippedIpaPath complete:^(BOOL result) {
         if (result) {
-            if (self->logLocalBlock)
-                self->logLocalBlock([NSString stringWithFormat:@"Zipping done. IPA file saved in the path: %@", zippedIpaPath]);
-            
             if (self->successLocalBlock)
                 self->successLocalBlock([NSString stringWithFormat:@"Resign result: %@", [[self->codesigningResult stringByAppendingString:@"\n\n"] stringByAppendingString:self->verificationResult]]);
         } else {
             if (self->errorLocalBlock)
-                self->errorLocalBlock(@"Unable to unzip the file: the destination path is empty or the source IPA file was corrupted");
+                self->errorLocalBlock(@"ERROR: File save failed.");
         }
     }];
 }
@@ -231,7 +228,7 @@
     successLocalBlock = [successBlock copy];
     
     if (logLocalBlock)
-        logLocalBlock(@"Generating entitlements..");
+        logLocalBlock(@"Generating entitlements...");
     
     // 检查是否存在 Entitlements，然后删掉
     NSString* entitlementsPath = [self.workPath stringByAppendingPathComponent:kEntitlementsPlistFilename];
@@ -239,7 +236,7 @@
         NSError *error = nil;
         if (![manager removeItemAtPath:entitlementsPath error:&error]) {
             if (errorLocalBlock != nil)
-                errorLocalBlock(@"Unable to delete the last entitlements.mobileprovision. Please try again.");
+                errorLocalBlock(@"ERROR: Delete old Entitlements.plist failed.");
             return;
         }
     }
@@ -266,7 +263,7 @@
                         [self doEntitlements:provisioningprofile];
                     } else {
                         if (self->errorLocalBlock != nil)
-                            self->errorLocalBlock(@"Entitlements generation failed. Please try again");
+                            self->errorLocalBlock(@"Create new Entitlements.plist failed.");
                     }
                 }];
             }
@@ -274,7 +271,7 @@
         [NSThread detachNewThreadSelector:@selector(watchEntitlements:) toTarget:self withObject:handle];
     } else {
         if (errorLocalBlock != nil)
-            errorLocalBlock(@"Unable to replace the entitlements.mobileprovision. Please try again.");
+            errorLocalBlock(@"ERROR: Selected provisioning profile does not exist.");
         return;
     }
 }
@@ -293,10 +290,10 @@
     
     if([xmlData writeToFile:filePath atomically:YES]) {
         if (successLocalBlock != nil)
-            successLocalBlock(@"Entitlements generated");
+            successLocalBlock(@"Entitlements.plist was created successfully.");
     } else {
         if (errorLocalBlock != nil)
-            errorLocalBlock(@"Entitlements generation failed. Please try again");
+            errorLocalBlock(@"ERROR: Unable to write data to Entitlements.plist file.");
     }
 }
 
@@ -315,7 +312,7 @@
     successLocalBlock = [successBlock copy];
     
     if (logLocalBlock)
-        logLocalBlock(@"Editing the Info.plist file...");
+        logLocalBlock(@"Editing Info.plist...");
     NSString* infoPlistPath = [self.appPath stringByAppendingPathComponent:kInfoPlistFilename];
     // 找 Info.plist
     if ([[NSFileManager defaultManager] fileExistsAtPath:infoPlistPath]) {
@@ -328,15 +325,15 @@
         NSData *xmlData = [NSPropertyListSerialization dataWithPropertyList:plist format:NSPropertyListXMLFormat_v1_0 options:kCFPropertyListImmutable error:nil];
         if ([xmlData writeToFile:infoPlistPath atomically:YES]) {
             if (successLocalBlock != nil)
-                successBlock(@"File Info.plist edited properly");
+                successBlock(@"Info.plist saved.");
             
         } else {
             if (errorLocalBlock != nil)
-                errorLocalBlock(@"Failed to re-save the Info.plist file properly. Please try again.");
+                errorLocalBlock(@"ERROR: Cannot write data to Info.plist.");
         }
     } else {
         if (errorLocalBlock != nil)
-            errorLocalBlock(@"The IPA file you selected is corrupted: the app is unable to find a proper Info.plist file");
+            errorLocalBlock(@"ERROR: Info.plist not found.");
     }
 }
 
@@ -345,8 +342,6 @@
     logLocalBlock = [logBlock copy];
     errorLocalBlock = [errorBlock copy];
     successLocalBlock = [successBlock copy];
-    
-    if (logLocalBlock) logLocalBlock(@"Beginning the codesign...");
     
     if ([manager fileExistsAtPath:self.appPath]) {
         NSMutableArray *waitSignPathArray = @[].mutableCopy;
@@ -381,7 +376,7 @@
                 [codesignTask launch];
                 [NSThread detachNewThreadSelector:@selector(watchCodesigning:) toTarget:self withObject:handle];
                 
-                if (self->logLocalBlock) self->logLocalBlock([NSString stringWithFormat:@"start codesigning with %@...", [signPath lastPathComponent]]);
+                if (self->logLocalBlock) self->logLocalBlock([NSString stringWithFormat:@"Codesigning file: %@", [signPath lastPathComponent]]);
                 
                 IDRunLoop *verifyCodesigning = [IDRunLoop new];
                 [verifyCodesigning run:^{
@@ -397,7 +392,7 @@
                                     }
                                 } else {
                                     if (self->logLocalBlock) {
-                                        self->logLocalBlock([NSString stringWithFormat:@"%@ codesigning done", [signPath lastPathComponent]]);
+                                        self->logLocalBlock([NSString stringWithFormat:@"%@ signing is complete.", [signPath lastPathComponent]]);
                                         [queue next];
                                     }
                                 }
@@ -413,7 +408,7 @@
         [queue next];
         queue.noOperationPerform = ^{
             if (self->successLocalBlock && failurePath == nil)
-                self->successLocalBlock(@"Verification Codesigning dones");
+                self->successLocalBlock(@"Signature verification is complete.");
         };
         
     } else {
@@ -527,9 +522,7 @@
                     }];
                 }];
             }];
-        }];
-        
-        
+        }]; 
     }];
 }
 

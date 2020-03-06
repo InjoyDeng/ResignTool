@@ -22,7 +22,7 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_TIME_NOW, 0), ^{
         while (!self.isSuspend) {
             block();
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+            [[NSRunLoop currentRunLoop] runMode:NSRunLoopCommonModes beforeDate:[NSDate distantFuture]];
         }
     });
 }

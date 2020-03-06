@@ -71,6 +71,7 @@ static IDFileHelper *istance;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // 检查 KeyChain 中是否有证书，然后把证书保存到 self.certificatesArray
         NSString *securityResult = [[NSString alloc] initWithData:[handle readDataToEndOfFile] encoding:NSASCIIStringEncoding];
+        NSLog(@"%@", securityResult);
         if (securityResult == nil || securityResult.length < 1) return;
         NSArray *rawResult = [securityResult componentsSeparatedByString:@"\""];
         NSMutableArray *tempGetCertsResult = [NSMutableArray arrayWithCapacity:20];
@@ -124,7 +125,7 @@ static IDFileHelper *istance;
     
     NSTask *unzipTask = [[NSTask alloc] init];
     [unzipTask setLaunchPath:@"/usr/bin/unzip"];
-    [unzipTask setArguments:[NSArray arrayWithObjects:@"-q", filePath, @"-d", dstPath, nil]];
+    [unzipTask setArguments:[NSArray arrayWithObjects:filePath, @"-d", dstPath, nil]];
     [unzipTask launch];
     
     IDRunLoop *runloop = [IDRunLoop new];

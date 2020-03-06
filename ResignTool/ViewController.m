@@ -86,6 +86,22 @@
     }
 }
 
+- (IBAction)browseSavePathButtonAction:(id)sender {
+    // 作为第一响应
+    [self.view.window makeFirstResponder:nil];
+    
+    NSOpenPanel* openDlg = [NSOpenPanel openPanel];
+    [openDlg setCanChooseFiles:NO];
+    [openDlg setCanChooseDirectories:YES];
+    [openDlg setAllowsMultipleSelection:NO];
+    [openDlg setAllowsOtherFileTypes:NO];
+    
+    if ([openDlg runModal] == NSModalResponseOK) {
+        self.destinationPathField.stringValue = [[[openDlg URLs] objectAtIndex:0] path];
+    }
+}
+
+
 - (IBAction)bundleIdRadioAction:(id)sender {
     NSButtonCell *button = sender;
     if (button.tag == 101 && button.state == 0) {
@@ -125,7 +141,7 @@
     
     if (self.destinationPathField.stringValue.length == 0) {
         self.destinationPathField.stringValue = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) lastObject];
-        [self addLog:[NSString stringWithFormat:@"Default Save the file to your desktop"] withColor:[NSColor orangeColor]];
+        [self addLog:[NSString stringWithFormat:@"Default Save the file to Desktop folder"] withColor:[NSColor orangeColor]];
         return;
     }
     
@@ -158,7 +174,7 @@
                                                 [self addLog:errorString withColor:[NSColor redColor]];
                                             } success:^(id object) {
                                                 [self enableControls];
-                                                [self addLog:[NSString stringWithFormat:@"Resign done, ipa saved to %@", self.destinationPathField.stringValue] withColor:[NSColor greenColor]];
+                                                [self addLog:[NSString stringWithFormat:@"Successful signed, File saved in path: %@", self.destinationPathField.stringValue] withColor:[NSColor colorWithRed:90/255. green:196/255. blue:96/255. alpha:1]];
                                             }];
 }
 
@@ -168,12 +184,12 @@
 
 #pragma mark - ZIP/IPA Methods
 - (void)unzipIpa {
-    [self addLog:[NSString stringWithFormat:@"Start unzip the ipa file to path: %@", self.package.workPath] withColor:[NSColor blackColor]];
+    [self addLog:[NSString stringWithFormat:@"Extracting files to: %@", self.package.workPath] withColor:[NSColor blackColor]];
     
     [self disableControls];
     //解压包
     [self.package unzipIpa:^{
-        [self addLog:@"Unzip ipa file succeeded" withColor:[NSColor blackColor]];
+        [self addLog:@"Extraction is complete." withColor:[NSColor blackColor]];
         [self showIpaInfo];
         [self enableControls];
     } error:^(NSString *error) {
@@ -264,7 +280,7 @@
     [self.certificateComboBox setEnabled:NO];
     [self.appNameField setEnabled:NO];
     [self.destinationPathField setEnabled:NO];
-    [self.browseDestinationPathButton setEnabled:NO];
+    [self.browseSavePathButton setEnabled:NO];
     [self.bundleIdField setEnabled:NO];
     [self.resignButton setEnabled:NO];
     [self.cleanButton setEnabled:NO];
@@ -278,7 +294,7 @@
     [self.certificateComboBox setEnabled:YES];
     [self.appNameField setEnabled:YES];
     [self.destinationPathField setEnabled:YES];
-    [self.browseDestinationPathButton setEnabled:YES];
+    [self.browseSavePathButton setEnabled:YES];
     [self.bundleIdField setEnabled:YES];
     [self.resignButton setEnabled:YES];
     [self.cleanButton setEnabled:YES];

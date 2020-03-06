@@ -17,7 +17,7 @@
 @property (weak) IBOutlet NSComboBox    *provisioningComboBox;
 @property (weak) IBOutlet NSTextField   *appNameField;
 @property (weak) IBOutlet NSTextField   *destinationPathField;
-@property (weak) IBOutlet NSButton      *browseDestinationPathButton;
+@property (weak) IBOutlet NSButton      *browseSavePathButton;
 @property (weak) IBOutlet NSTextField   *bundleIdField;
 @property (weak) IBOutlet NSButton      *cacheFolderButton;
 @property (weak) IBOutlet NSButton      *resignButton;
